@@ -54,6 +54,9 @@ app.post('/ai/chat', async (req, res) => {
 
       if (stream) {
         res.setHeader('Content-Type', 'text/event-stream');
+        res.setHeader('Cache-Control', 'no-cache');
+        res.setHeader('Connection', 'keep-alive');
+        res.flushHeaders(); // Send headers immediately
         response.data.pipe(res);
       } else {
         const reply = response.data.choices[0].message.content;
@@ -86,6 +89,9 @@ app.post('/ai/chat', async (req, res) => {
 
         if (stream) {
           res.setHeader('Content-Type', 'text/event-stream');
+          res.setHeader('Cache-Control', 'no-cache');
+          res.setHeader('Connection', 'keep-alive');
+          res.flushHeaders();
           response.data.pipe(res);
         } else {
           const reply = response.data.choices[0].message.content;
