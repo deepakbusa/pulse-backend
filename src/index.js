@@ -23,9 +23,9 @@ app.post('/ai/chat', async (req, res) => {
       return res.status(400).json({ error: 'Messages array is required' });
     }
 
-    const apiKey = process.env.AZURE_API_KEY;
-    const apiUrl = process.env.AZURE_API_URL;
-    const deploymentId = process.env.AZURE_DEPLOYMENT_ID;
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const deploymentId = process.env.REACT_APP_DEPLOYMENT_ID;
 
     if (!apiKey || !apiUrl || !deploymentId) {
       return res.status(500).json({ error: 'Server configuration error' });
@@ -71,9 +71,9 @@ app.post('/ai/vision', async (req, res) => {
       return res.status(400).json({ error: 'Image and prompt are required' });
     }
 
-    const apiKey = process.env.AZURE_API_KEY;
-    const apiUrl = process.env.AZURE_API_URL;
-    const deploymentId = process.env.AZURE_DEPLOYMENT_ID;
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const deploymentId = process.env.REACT_APP_DEPLOYMENT_ID;
 
     if (!apiKey || !apiUrl || !deploymentId) {
       return res.status(500).json({ error: 'Server configuration error' });
@@ -112,8 +112,8 @@ app.post('/ai/vision', async (req, res) => {
 
 // Get Azure Speech configuration
 app.get('/config/speech', (req, res) => {
-  const speechKey = process.env.AZURE_SPEECH_KEY;
-  const speechRegion = process.env.AZURE_SPEECH_REGION;
+  const speechKey = process.env.REACT_APP_SPEECH_KEY;
+  const speechRegion = process.env.REACT_APP_SPEECH_REGION;
 
   if (!speechKey || !speechRegion) {
     return res.status(500).json({ error: 'Speech configuration not available' });
